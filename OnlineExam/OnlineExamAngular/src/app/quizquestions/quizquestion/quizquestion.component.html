@@ -1,0 +1,57 @@
+<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+  <input type="hidden" name="QuizQuestionID" #QuizQuestionID="ngModel" [(ngModel)]="service.formData.QuizQuestionID">
+  <div class="form-group">
+    <label>Subject</label>
+    <select name="SubjectID" #SubjectID="ngModel" [(ngModel)]="service.formData.SubjectID" class="form-control"
+      required>
+      <option *ngFor="let sub of service.listSub" [value]="sub.SubjectID">
+        {{sub.SubjectName}}
+      </option>
+    </select>
+
+    <label>Question Category</label>
+    <select name="QuestionCategoryId" #QuestionCategoryId="ngModel" [(ngModel)]="service.formData.QuestionCategoryId" class="form-control"
+      required>
+      <option *ngFor="let cat of service.listCat" [value]="cat.QuestionCategoryId">
+        {{cat.Category}}
+      </option>
+    </select>
+
+    <label>Exhibit</label>
+    <select name="ExhibitId" #ExhibitId="ngModel" [(ngModel)]="service.formData.ExhibitId" class="form-control"
+      required>
+      <option *ngFor="let Exh of service.listExh" [value]="Exh.ExhibitId">
+        {{Exh.ExhibitData}}
+      </option>
+    </select>
+
+    <label>Question</label>
+    <input name="Qn" #Qn="ngModel" [(ngModel)]="service.formData.Qn" class="form-control" required>
+    <div class="validation-error" *ngIf="Qn.invalid && Qn.touched">Question is required</div>
+
+    <label>Option1</label>
+    <input name="Option1" #Option1="ngModel" [(ngModel)]="service.formData.Option1" class="form-control" required>
+    <div class="validation-error" *ngIf="Option1.invalid && Option1.touched">Option is required</div>
+
+    <label>Option2</label>
+    <input name="Option2" #Option2="ngModel" [(ngModel)]="service.formData.Option2" class="form-control" required>
+    <div class="validation-error" *ngIf="Option2.invalid && Option2.touched">Option is required</div>
+
+    <label>Option3</label>
+    <input name="Option3" #Option3="ngModel" [(ngModel)]="service.formData.Option3" class="form-control" required>
+    
+
+    <label>Option4</label>
+    <input name="Option4" #Option4="ngModel" [(ngModel)]="service.formData.Option4" class="form-control" required>
+    
+
+    <label>Answer</label>
+    <input name="Answer" #Answer="ngModel" [(ngModel)]="service.formData.Answer" class="form-control" required>
+    <div class="validation-error" *ngIf="Answer.invalid && Answer.touched">Answer is required</div>
+
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-lg btn-block">Submit</button>
+  </div>
+</form>
